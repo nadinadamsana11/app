@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tools Hub</title>
+    
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background overlay elements for beautiful visual -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+
+    <main class="container">
+        <header>
+            <div class="header-content">
+                <h1>My <span class="highlight">Tools Hub</span></h1>
+                <p>Welcome to your central repository of tools. Click a card to open the tool.</p>
+            </div>
+            <!-- Search bar -->
+            <div class="search-container">
+                <i class="fa-solid fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search for a tool...">
+            </div>
+        </header>
+
+        <section class="tools-grid" id="toolsGrid">
+            <!-- Cards will be dynamically inserted here by JavaScript -->
+        </section>
+    </main>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>

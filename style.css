@@ -1,0 +1,284 @@
+/* Base & Reset */
+:root {
+    --bg-color: #0b0f19;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --card-bg: rgba(30, 41, 59, 0.5);
+    --card-border: rgba(148, 163, 184, 0.1);
+    --card-hover-border: rgba(168, 85, 247, 0.5);
+    --accent-primary: #a855f7;
+    --accent-secondary: #3b82f6;
+    --accent-tertiary: #ec4899;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    line-height: 1.6;
+}
+
+/* Background Shapes (Glassmorphism Environment) */
+.bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.shape-1 {
+    top: -10%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: var(--accent-primary);
+}
+
+.shape-2 {
+    bottom: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: var(--accent-secondary);
+}
+
+.shape-3 {
+    top: 40%;
+    left: 40%;
+    width: 400px;
+    height: 400px;
+    background: var(--accent-tertiary);
+    opacity: 0.3;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+/* Header */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 4rem;
+    gap: 2rem;
+}
+
+.header-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.highlight {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header-content p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Search Bar */
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border-radius: 50px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--card-border);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+}
+
+#searchInput::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Tools Grid */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* App Card */
+.app-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2rem;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Hover effects */
+.app-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--card-hover-border);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(168, 85, 247, 0.15);
+}
+
+/* Card Accent Line */
+.app-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.app-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Icon Container */
+.icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.app-card:hover .icon-wrapper {
+    background: var(--accent-primary);
+    color: white;
+    transform: scale(1.1) rotate(5deg);
+}
+
+.icon-wrapper.blue { color: var(--accent-secondary); }
+.app-card:hover .icon-wrapper.blue { background: var(--accent-secondary); color: white; }
+
+.icon-wrapper.pink { color: var(--accent-tertiary); }
+.app-card:hover .icon-wrapper.pink { background: var(--accent-tertiary); color: white; }
+
+.icon-wrapper.green { color: #10b981; }
+.app-card:hover .icon-wrapper.green { background: #10b981; color: white; }
+
+.icon-wrapper.orange { color: #f59e0b; }
+.app-card:hover .icon-wrapper.orange { background: #f59e0b; color: white; }
+
+/* Card Content */
+.app-card h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.app-card:hover h3 {
+    color: var(--accent-primary);
+}
+
+.app-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Arrow Icon */
+.arrow-icon {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.app-card:hover .arrow-icon {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--accent-primary);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.3);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2.5rem;
+    }
+    .tools-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}
